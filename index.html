@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Palazzo</title>
+    <link rel="icon" href="./img/icons/favicon.png" type="img/png" id="favicon">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./responsive.css">
+    <link rel="stylesheet" href="./fonts.css">
+    <script src="./script.js"></script>
+    <script src="./items.js"></script>
+</head>
+
+<body onload="showAll()">
+    <div class="main-container">
+
+        <div class="body-container">
+
+            <div class="body-container-without-footer">
+
+                <!-- header -->
+
+                <header>
+
+                    <img class="logo-header" src="./img/icons/logo-icon-header.png">
+                    <img class="logo-header-small" src="./img/icons/favicon.png">
+                    <p><b>Speisekarte</b></p>
+                    <div class="btn-bar-header">
+                        <img class="bar-header" src="./img/icons/bars-solid.svg">
+                    </div>
+
+                </header>
+
+                <!-- main-part -->
+
+                <!-- main-section -->
+
+                <div class="main-section">
+                    <img class="img-atf" src="./img/food-img/pizza-atf.jpg">
+
+                    <div class="icon-site-container">
+                        <div class="icon-site-box">
+                            <img class="icon-site" src="./img/icons/icon-site.png">
+                        </div>
+                    </div>
+
+                    <div class="scheme-section">
+
+                        <h1 class="title">Pizza Palazzo Winterthur</h1>
+
+                        <div class="btn-info-icon" onclick="openInfo()">
+                            <img class="info-icon" src="./img/icons/circle-info-solid.svg">
+                        </div>
+
+                        <div class="star-rating-section">
+                            <div class="star-container">
+                                <img class="star" src="./img/icons/star-solid.svg">
+                                <img class="star" src="./img/icons/star-solid.svg">
+                                <img class="star" src="./img/icons/star-solid.svg">
+                                <img class="star" src="./img/icons/star-solid.svg">
+                                <img class="star" src="./img/icons/star-solid.svg">
+                            </div>
+                            <p class="rating">311 Bewertungen</p>
+                        </div>
+
+                        <div class="order-info-section">
+                            <img class="basket-small" src="./img/icons/basket-shopping-solid.svg">
+                            <p>Min. 20.00 CHF</p>
+                            <p class="point">•</p>
+                            <img class="bicycle-small" src="./img/icons/bicycle-solid.svg">
+                            <p>6.90 CHF</p>
+                        </div>
+
+                        <p class="meat-declaration-section">Fleischdeklaration: Herkunft Schweiz</p>
+
+                    </div>
+
+                    <!-- menu-selection-section -->
+
+                    <div class="menu-selection-section">
+                        <div class="menu-scroll-bar">
+                            <div class="btn-menu-selection btn-left" onclick="showAll()">Alle</div>
+                            <div class="btn-menu-selection btn-left" onclick="showMenuItems(0)">Pizza</div>
+                            <div class="btn-menu-selection btn-left" onclick="showMenuItems(1)">Salate</div>
+                            <div class="btn-menu-selection btn-left" onclick="showMenuItems(2)">Dessert</div>
+                            <div class="btn-menu-selection btn-left" onclick="showMenuItems(3)">Getränke</div>
+                        </div>
+                    </div>
+
+                    <!-- menu-list-section -->
+
+                    <div class="menu-list-section">
+                        <div class="menu-list-section-inner-container" id="menu-list-section">
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- order-section -->
+
+                <div class="order-section order-section-d-none" id="order-section">
+                    <div class="order-container">
+                        <img src="./img/icons/close-icon.svg" class="close-icon-order-section" onclick="closeShoppingBasket()">
+                        <h1 class="title-order">Warenkorb</h1>
+                        <div class="delivery-or-get-btn">
+                            <div class="d-o-g-btn-delivery bg-white" id="btn-delivery" onclick="btnDeliveryGet('btn-delivery', 'btn-get')">
+                                <img class="btn-img" src="./img/icons/bicycle-solid.svg">
+                                <div class="text-switch">
+                                    <p><b>Lieferung</b></p>
+                                    <p>40-50 min</p>
+                                </div>
+                            </div>
+                            <div class="d-o-g-btn-get" id="btn-get" onclick="btnDeliveryGet('btn-get', 'btn-delivery')">
+                                <img class="btn-img" src="./img/icons/person-walking-solid.svg">
+                                <div class="text-switch">
+                                    <p><b>Abholung</b></p>
+                                    <p>15 min</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- no-items -->
+
+                        <div class="no-items" id="no-items">
+                            <img class="basket-no-items" src="./img/icons/basket-shopping-solid.svg">
+                            <h1 class="title-no-items">Fülle deinen Warenkorb</h1>
+                            <p class="text-no-items">Füge einige leckere Gerichte aus der Speisekarte hinzu und bestelle
+                                dein
+                                Essen.
+                            </p>
+                        </div>
+
+                        <!-- items-in-basket -->
+
+                        <div class="items-in-basket d-none" id="items-in-basket">
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- footer -->
+
+            <footer>
+                <span>Pizza Palazzo by Pascale Sennhauser</span>
+                <div class="impressum-datenschutz-container">
+                    <a href="impressum.html" class="footer-link">Impressum</a> |
+                    <a href="datenschutz.html" class="footer-link">Datenschutz</a>
+                </div>
+            </footer>
+
+        </div>
+
+        <!-- info-pop-up -->
+
+        <div class="pop-up-info d-none" id="pop-up-info">
+            <div class="info-container">
+                <h1>Info</h1>
+                <img src="./img/icons/close-icon.svg" class="close-btn" onclick="closeInfo()">
+                <div class="location">
+                    <div class="address-container">
+                        <h2>Adresse</h2>
+                        <span>Am Bach 13, 8400 Winterthur</span>
+                    </div>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2696.0715818979047!2d8.745701276426423!3d47.48851887117921!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479a99bff7689ccb%3A0x239894ddf65c1224!2sAm%20Bach%2013%2C%208400%20Winterthur!5e0!3m2!1sde!2sch!4v1702839485216!5m2!1sde!2sch"
+                        style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="opening-hours">
+                    <h2>Öffnungszeiten</h2>
+                    <div class="oh-container">
+                        <table>
+                            <tr>
+                                <td>Montag</td>
+                                <td>geschlossen</td>
+                            </tr>
+                            <tr>
+                                <td>Dienstag</td>
+                                <td>11.00 - 22.00 Uhr</td>
+                            </tr>
+                            <tr>
+                                <td>Mittwoch</td>
+                                <td>11.00 - 22.00 Uhr</td>
+                            </tr>
+                            <tr>
+                                <td>Donnerstag</td>
+                                <td>11.00 - 22.00 Uhr</td>
+                            </tr>
+                            <tr>
+                                <td>Freitag</td>
+                                <td>11.00 - 02.00 Uhr</td>
+                            </tr>
+                            <tr>
+                                <td>Samstag</td>
+                                <td>11.00 - 02.00 Uhr</td>
+                            </tr>
+                            <tr>
+                                <td>Sonntag</td>
+                                <td>17.00 - 22.00 Uhr</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="contact">
+                    <h2>Kontakt</h2>
+                    <span>Pizza Palazzo Winterthur</span><br>
+                    <span>Am Bach 13</span><br>
+                    <span>8400 Winterthur</span><br>
+                    <span>Tel: 012 345 67 89</span><br>
+                </div>
+            </div>
+        </div>
+
+        <!-- pop-up-btn-shopping-basket-->
+
+        <div class="pop-up-btn-shopping-basket" id="pop-up-shopping-basket">
+            <div class="btn-show-shopping-basket" onclick="openShoppingBasket()">
+                <img class="shopping-basket-icon-ssb" src="./img/icons/basket-shopping-solid.svg">
+                <span>Warenkorb (<span id="price-shopping-basket"></span> CHF)</span>
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
