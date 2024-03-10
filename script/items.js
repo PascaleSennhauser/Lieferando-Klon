@@ -1,3 +1,4 @@
+/* Arrays of the food-images, categories and the menus */
 let img = ['./img/food-img/pizza.jpg', './img/food-img/salad.jpg', './img/food-img/dessert.jpg', './img/food-img/drinks.jpg'];
 let category = ['Pizza', 'Salate', 'Dessert', 'Getränke'];
 let menu = [

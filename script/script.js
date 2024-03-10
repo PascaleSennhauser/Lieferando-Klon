@@ -1,3 +1,6 @@
+/**
+ * This function shows all the menu items.
+ */
 function showAll() {
     let menuListSection = document.getElementById('menu-list-section');
     menuListSection.innerHTML = '';
@@ -6,6 +9,10 @@ function showAll() {
 }
 
 
+/**
+ * This function goes through the category-array.
+ * @param {HTMLElement} menuListSection - The HTML-container, in which the menu-images and menu-items are inserted.
+ */
 function forLoopMenu(menuListSection) {
     for (let c = 0; c < category.length; c++) {
         menuListSection.innerHTML += menuImg(c);
@@ -14,6 +21,11 @@ function forLoopMenu(menuListSection) {
 }
 
 
+/**
+ * This function shows the image and title from the category.
+ * @param {Number} c - The current index for the category and the belonging image.
+ * @returns The HTML-element with the image and title of a category.
+ */
 function menuImg(c) {
     return /*html*/`
     <div class="section-menu">
@@ -24,6 +36,11 @@ function menuImg(c) {
 }
 
 
+/**
+ * This function selects all the items from a category by going through the array menu.
+ * @param {HTMLElement} menuListSection - The HTML-container, in which the menu-images and menu-items are inserted.
+ * @param {Number} category - The index of the category.
+ */
 function forLoopPerCategory(menuListSection, category) {
     for (let i = 0; i < menu.length; i++) {
         let menuItem = menu[i];
@@ -35,6 +52,13 @@ function forLoopPerCategory(menuListSection, category) {
 }
 
 
+/**
+ * This function renders the html-element of a menu-item.
+ * @param {Object} menuItem - The current object of the JSON-Array "menu"
+ * @param {Number} i - The current index.
+ * @param {Number} price - The price of the current item.
+ * @returns - The html-element of the menu-item.
+ */
 function menuItems(menuItem, i, price) {
     return /*html*/`
         <div class="menu-item">
@@ -52,13 +76,10 @@ function menuItems(menuItem, i, price) {
 }
 
 
-function renderBasketBtnResponsiv() {
-    let totalBasketResponsiv = document.getElementById('price-shopping-basket');
-    let roundedTotal = total.toFixed(2);
-    totalBasketResponsiv.innerHTML = roundedTotal;
-}
-
-
+/**
+ * This function renders the items from the chosen category.
+ * @param {Number} index - The number of the chosen category.
+ */
 function showMenuItems(index) {
     let menuListSection = document.getElementById('menu-list-section');
     menuListSection.innerHTML = menuImg(index);
@@ -66,6 +87,11 @@ function showMenuItems(index) {
 }
 
 
+/**
+ * This function highlights the delivery or the get-button and calculates it to the total.
+ * @param {String} add - The button, which gets the white background.
+ * @param {String} remove - The button, from whom, the white background gets removed.
+ */
 function btnDeliveryGet(add, remove) {
     document.getElementById(add).classList.add('bg-white');
     document.getElementById(remove).classList.remove('bg-white');
@@ -74,6 +100,10 @@ function btnDeliveryGet(add, remove) {
 }
 
 
+/**
+ * This function adds a menu-item to the basket.
+ * @param {Number} i - The index of the menu-item.
+ */
 function addToBasket(i) {
     let menu = document.getElementById(`menu-name${i}`).innerHTML;
     let price = +document.getElementById(`menu-price${i}`).innerHTML;
@@ -90,12 +120,31 @@ function addToBasket(i) {
 }
 
 
+/**
+ * This function gets the index of the added item in the menuBasket-array.
+ * @param {*} menu 
+ * @returns The index of the item in the basket.
+ */
 function getMenuIndex(menu) {
     let index = menuBasket.indexOf(menu);
     return index;
 }
 
 
+/**
+ * This function renders the basket-button in the responsive design.
+ */
+function renderBasketBtnResponsiv() {
+    let totalBasketResponsiv = document.getElementById('price-shopping-basket');
+    let roundedTotal = total.toFixed(2);
+    totalBasketResponsiv.innerHTML = roundedTotal;
+}
+
+
+/**
+ * This function adds the price of the item to all the numbers.
+ * @param {Number} j - The index of the item in the menuBasket-array.
+ */
 function amountPlus(j) {
     amountsBasket[j]++;
     calculatePrice(j);
@@ -104,6 +153,9 @@ function amountPlus(j) {
 }
 
 
+/**
+ * This function renders the basket-part.
+ */
 function renderBasket() {
     let basket = document.getElementById('items-in-basket');
     basket.innerHTML = '';
@@ -120,12 +172,22 @@ function renderBasket() {
 }
 
 
+/**
+ * This function shows the basket in the basket-part, when there are no items.
+ * @param {String} remove - The html-element, which gets removed.
+ * @param {String} add - The html-element, which gets added.
+ */
 function showBasket(remove, add) {
     document.getElementById(remove).classList.remove('d-none');
     document.getElementById(add).classList.add('d-none');
 }
 
 
+/**
+ * This function renders a specific item, which gets showed in the basket.
+ * @param {Number} j - The index of the item.
+ * @returns The html-element of the item in the basket.
+ */
 function itemField(j) {
     let priceBasket = +(pricesBasket[j]);
     let roundedPrice = roundPrice(priceBasket);
@@ -133,12 +195,23 @@ function itemField(j) {
 }
 
 
+/**
+ * This function rounds the price on two decimal places.
+ * @param {Number} priceOld - The price not rounded.
+ * @returns The rounded price.
+ */
 function roundPrice(priceOld) {
     let price = priceOld.toFixed(2);
     return price;
 }
 
 
+/**
+ * This function shows the html-element of an item in the basket.
+ * @param {Number} roundedPrice - The price of the item.
+ * @param {Number} j - The index of the item.
+ * @returns The html-element of the item.
+ */
 function templateItemField(roundedPrice, j) {
     return /*html*/`
         <div class="menu-basket">
@@ -161,6 +234,10 @@ function templateItemField(roundedPrice, j) {
 }
 
 
+/**
+ * This function shows the prices to pay.
+ * @returns The html-template of the prices to pay.
+ */
 function paySection() {
     const roundedTotalBtn = roundPrice(total);
     return /*html*/`
@@ -174,6 +251,10 @@ function paySection() {
 }
 
 
+/**
+ * This function removes the amount of an item in the basket.
+ * @param {Number} j - The index of the item.
+ */
 function amountMinus(j) {
     amountsBasket[j]--;
     if (amountsBasket[j] === 0) {
@@ -187,10 +268,13 @@ function amountMinus(j) {
 }
 
 
+/**
+ * This function calculates the new price of an item in the basket.
+ * @param {Number} j - The index of the item in the basket.
+ */
 function calculatePrice(j) {
     let menuItem = document.getElementById(`menu-basket${j}`).innerHTML;
     let index = getIndex(menuItem);
-   
     if (index !== -1) {
         let price = +menu[index]['price'];
         let amount = +amountsBasket[j];
@@ -202,6 +286,11 @@ function calculatePrice(j) {
 }
 
 
+/**
+ * This function gets the index of the menu-item in the basket.
+ * @param {String} menuItem - The name of the menu-item.
+ * @returns The index gets returned.
+ */
 function getIndex(menuItem) {
     for (let i = 0; i < menu.length; i++) {
         if (menu[i]['name'] === menuItem) {
@@ -212,6 +301,9 @@ function getIndex(menuItem) {
 }
 
 
+/**
+ * This function calculates the prices in the basket.
+ */
 function calculateDifferentPrices() {
     calculateSubtotal();
     calculateDeliveryExpenses();
@@ -222,6 +314,10 @@ function calculateDifferentPrices() {
     document.getElementById('pay-text').innerHTML = `Bezahlen (${roundedTotal} CHF)`;
 }
 
+
+/**
+ * This function calculates the subtotal in the basket.
+ */
 function calculateSubtotal() {
     subtotal = 0;
     for (let j = 0; j < pricesBasket.length; j++) {
@@ -230,16 +326,21 @@ function calculateSubtotal() {
 }
 
 
+/**
+ * This function calculates the delivery expenses in the basket.
+ */
 function calculateDeliveryExpenses() {
     if (document.getElementById('btn-delivery').classList.contains('bg-white')) {
         deliveryExpenses = 6.9;
     } else {
-
         deliveryExpenses = 0;
     }
 }
 
 
+/**
+ * This function calculates the cash deficit in the basket.
+ */
 function calculateCashDeficit() {
     if ((subtotal + deliveryExpenses) >= 20) {
         cashDeficit = 0;
@@ -249,6 +350,9 @@ function calculateCashDeficit() {
 }
 
 
+/**
+ * This function calculates the total in the basket.
+ */
 function calculateTotal() {
     if ((subtotal + deliveryExpenses) > 20) {
         total = subtotal + deliveryExpenses;
@@ -258,17 +362,28 @@ function calculateTotal() {
 }
 
 
+/**
+ * This function gets all the rounded prices in the basket and renders the html-template.
+ * @returns - The html-template of the prices in the basket are returned.
+ */
 function showCalculateSection() {
     const roundedSubtotal = roundPrice(subtotal);
     const roundedDeliveryExpenses = roundPrice(deliveryExpenses);
     const roundedCashDeficit = roundPrice(cashDeficit);
     const roundedTotal = roundPrice(total);
-
     return templateCalculateSection(roundedSubtotal, roundedDeliveryExpenses, roundedCashDeficit, roundedTotal);
-
 }
 
 
+
+/**
+ * This function returnes the html-template from the different prices in the basket.
+ * @param {Number} roundedSubtotal - The rounded subtotal.
+ * @param {Number} roundedDeliveryExpenses - The rounded delivery expenses.
+ * @param {Number} roundedCashDeficit - The rounded cash deficit.
+ * @param {Number} roundedTotal - The rounded total.
+ * @returns The html-template with the different prices.
+ */
 function templateCalculateSection(roundedSubtotal, roundedDeliveryExpenses, roundedCashDeficit, roundedTotal) {
     return /*html*/`
         <table>
@@ -293,6 +408,9 @@ function templateCalculateSection(roundedSubtotal, roundedDeliveryExpenses, roun
 }
 
 
+/**
+ * This function clears the arrays from the basket, when the pay-button is clicked.
+ */
 function payTransaction() {
     menuBasket = [];
     pricesBasket = [];
@@ -304,22 +422,34 @@ function payTransaction() {
 }
 
 
+/**
+ * This function opens the info-pop-up.
+ */
 function openInfo() {
     document.getElementById('pop-up-info').classList.remove('d-none');
 }
 
 
+/**
+ * This function closes the info-pop-up.
+ */
 function closeInfo() {
     document.getElementById('pop-up-info').classList.add('d-none');
 }
 
 
+/**
+ * This function opens the shopping basket in the responsive design.
+ */
 function openShoppingBasket() {
     document.getElementById('order-section').classList.remove('order-section-d-none');
     document.getElementById('pop-up-shopping-basket').classList.add('d-none');
 }
 
 
+/**
+ * This function closes the basket in the responsive design.
+ */
 function closeShoppingBasket() {
     document.getElementById('order-section').classList.add('order-section-d-none');
     document.getElementById('pop-up-shopping-basket').classList.remove('d-none');
