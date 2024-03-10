@@ -566,7 +566,6 @@ header {
     width: 20px;
 }
 
-
 td {
     height: 24px;
 }
@@ -586,15 +585,12 @@ td p {
     margin: 0;
 }
 
-
-
 .pay-section {
     display: flex;
     justify-content: center;
     padding-left: 20px;
     padding-right: 20px;
     margin-top: 20px;
-
 }
 
 .pay-btn {
@@ -619,7 +615,6 @@ td p {
     font-size: 18px;
     font-weight: bold;
 }
-
 
 /* footer */
 
@@ -670,7 +665,7 @@ footer {
     flex-direction: column;
     padding-top: 20px;
     padding-bottom: 20px;
-    overflow-y: scroll;
+    overflow-y: auto;
     position: relative;
 }
 
@@ -701,13 +696,6 @@ footer {
 
 .address-container h2 {
     margin-bottom: 8px;
-}
-
-iframe {
-    width: 100%;
-    height: 300px;
-    margin-top: 20px;
-    margin-bottom: 20px;
 }
 
 .opening-hours {
@@ -750,8 +738,27 @@ iframe {
     display: none;
 }
 
-/* Impressum */
+/* Impressum and privacy-policy */
 
-.impressum-section {
+.back-arrow {
     margin: 20px;
+}
+
+.back-arrow a {
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.impressum-container,
+.datenschutz-container {
+    margin: 0 20px 20px 20px;
+}
+
+.impressum-container h1,
+.datenschutz-container h1 {
+    margin: 0 0 20px 0;
+}
+
+li a {
+    color: #564C55;
 }

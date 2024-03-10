@@ -10,7 +10,6 @@
         display: unset;
     }
 
-
     /* main-part-section */
 
     /* scheme-section */
@@ -169,7 +168,6 @@
     
 }
 
-
 @media (max-width: 350px) {
 
     /* menu-list-section */
@@ -186,12 +184,16 @@
         font-size: 16px;
     }
 
-
-
     /* pop-up-info */
 
     .oh-container {
         font-size: 12px;
+    }
+
+    /* privacy-policy */
+
+    .datenschutz-container h1 {
+        font-size: 24px;
     }
 
 }
